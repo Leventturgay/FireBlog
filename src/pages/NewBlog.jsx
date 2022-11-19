@@ -1,9 +1,10 @@
 import React from "react";
+import BlogForm from "../components/BlogForm";
 
 const NewBlog = () => {
   return (
     <div>
-      <h1>NewBlog</h1>
+      <BlogForm />
     </div>
   );
 };
