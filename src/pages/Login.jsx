@@ -4,14 +4,16 @@ import { signIn, signUpWithGoogle } from "../helpers/firebase";
 import "./style.css";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     signIn(email, password, navigate);
-
     console.log(email, password);
+    setEmail("");
+    setPassword("");
   };
   const handleGoogleProvider = () => {
     signUpWithGoogle(navigate);
@@ -24,12 +26,14 @@ const Login = () => {
         <h2>Create Account</h2>
         <form className="form" onSubmit={handleSubmit}>
           <input
+            value={email}
             type="email"
             placeholder="Email"
             required
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
+            value={password}
             type="password"
             placeholder="Password"
             required
